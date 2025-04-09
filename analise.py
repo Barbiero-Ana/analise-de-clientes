@@ -136,26 +136,60 @@ def filtro_busca():
         print('Deseja ver:\n1 - Ver estados cívis\n2 - Ver  profissão dos usuários\n3 - Ver niveis de escolaridade no documento\n4 - Filtrar por usuários que fazem parte do programa de membro')
         op = int(input('- '))
         if op == 1:
-            print('Buscar por:\n1 - estado civil em especifico\n2 - Ver todos')
-            op = int(input('- '))
+            filtro_status_marital()
 
+
+def filtro_status_marital():
+    print('Buscar por:\n1 - estado civil em especifico\n2 - Ver todos')
+    op = int(input('- '))
+
+    if op == 1:
+        print('Buscar por:\n1 - Viúvos\n2 - Csados\n3 - Divorciados\n4 - Solteiros')
+        op = int(input('- '))
+        if op == 1:
+            print('Deseja ver:\n1 - todos com ID de usuários\n2 - Apenas a quantidade total')
+            op = int(input('- '))
             if op == 1:
-                print('Buscar por:\n1 - Viúvos\n2 - Csados\n3 - Divorciados\n4 - Solteiros')
-                op = int(input('- '))
-                if op == 1:
-                    print('Deseja ver:\n1 - todos com ID de usuários\n2 - Apenas a quantidade total')
-                    op = int(input('- '))
-                    if op == 1:
-                        print('\nUsuários Viúvos\n')
-                        for i, row in df.iterrows():
-                            print(f'- Cliente id: {row['Customer_ID']} | Categoria: {df['Widowed ']} |')
-                    elif op == 2:
-                        val = df[df['Marital_Status'] == 'Widowed '].value_counts()
-                        print(val)
-                        
+                print('\nUsuários Viúvos\n')
+                for i, row in df.iterrows():
+                    print(f'- Cliente id: {row['Customer_ID']} | Categoria: {df['Widowed ']} |')
             elif op == 2:
-                print(f'{df['Marital_Status'].value_counts()}')
-        
+                val = df[df['Marital_Status'] == 'Widowed'].value_counts()
+                print(val)
+        elif op == 2:
+            print('Deseja ver:\n1 - todos com ID de usuários\n2 - Apenas a quantidade total')
+            op = int(input('- '))
+            if op == 1:
+                print('\nUsuários Casados\n')
+                for i, row in df.iterrows():
+                    print(f'- Cliente id: {row['Customer_ID']} | Categoria: {df['Married']} |')
+            elif op == 2:
+                val = df[df['Marital_Status'] == 'Married'].value_counts()
+                print(val)
+
+        elif op == 3:
+            print('Deseja ver:\n1 - todos com ID de usuários\n2 - Apenas a quantidade total')
+            op = int(input('- '))
+            if op == 1:
+                print('\nUsuários Divorciados\n')
+                for i, row in df.iterrows():
+                    print(f'- Cliente id: {row['Customer_ID']} | Categoria: {df['Divorced']} |')
+            elif op == 2:
+                val = df[df['Marital_Status'] == 'Divorced'].value_counts()
+                print(val)
+
+        elif op == 4:
+            print('Deseja ver:\n1 - todos com ID de usuários\n2 - Apenas a quantidade total')
+            op = int(input('- '))
+            if op == 1:
+                print('\nUsuários Solteiros\n')
+                for i, row in df.iterrows():
+                    print(f'- Cliente id: {row['Customer_ID']} | Categoria: {df['Single']} |')
+            elif op == 2:
+                val = df[df['Marital_Status'] == 'Single'].value_counts()
+                print(val)
+    elif op == 2:
+        print(f'{df['Marital_Status'].value_counts()}')
 
 
 
