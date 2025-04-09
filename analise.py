@@ -94,11 +94,13 @@ def info_data():
             print(df['Location'].value_counts(normalize= True) * 100)
         elif op == 'N'.lower():
             print(df['Location'])
+
+            
     elif op == 8:
         print(df['Time_Spent_on_Product_Research(hours)'])
 
     elif op == 9:
-        print('Deseja ver:\n1 - todos\2 - Quantidade em especifico')
+        print('Deseja ver:\n1 - todos\n2 - Quantidade em especifico')
         op = int(input('- '))
         if op == 1:
             print('\nAvaliação dos produtos\n')
@@ -106,7 +108,7 @@ def info_data():
                 print(f'- Cliente id: {row['Customer_ID']} | Categoria: {row['Purchase_Category']} | Avaliação: {row['Product_Rating']}')
         elif op == 2:
             n = int(input('Digite a quantidade que deseja ver: '))
-            print(f'{n} top avaliações:')
+            print(f'\n{n} top avaliações:\n')
             top = df.sort_values(by='Product_Rating', ascending= False).head(n)
             for i, row in top.iterrows():
                 print(f'{i+1}° - Cliente ID: {row['Customer_ID']} | Categoria: {row["Purchase_Category"]} | Avaliação: {row["Product_Rating"]}')
@@ -148,7 +150,7 @@ def filtro_busca():
 
 def main():
     while True:
-        print('\nBem vindo ao sistema de análise! O que deseja fazer?\n1 - Informações do arquio\n2 - Filtro de pesquisa\n3 - Ocorrências\n4 - Valores totais e médios\n5 - Público alvo\n')
+        print('\nBem vindo ao sistema de análise! O que deseja fazer?\n1 - Informações do arquivo\n2 - Filtro de pesquisa\n3 - Ocorrências\n4 - Valores totais e médios\n5 - Público alvo\n')
 
         op = int(input('- '))
 
