@@ -45,7 +45,7 @@ pd.set_option('display.expand_frame_repr', False) # deve mostrar todos os cabeca
 
 
 def info_data():
-    print('\nDeseja ver que informação da tablea?\n1 - Quantidade de linhas e colunas\n2 - Nome das colunas\n3 - Tipos de dados contidos no arquivo\n4 - Quantidade de cada genero\n5 - thinkingggg.........')
+    print('\nDeseja ver que informação da tablea?\n1 - Quantidade de linhas e colunas\n2 - Nome das colunas\n3 - Tipos de dados contidos no arquivo\n4 - Quantidade de cada genero\n5 - Distribuição por nível de escolaridade\n6 - Distribuição por ocupação/ profissão\n7 - Localizações de compras realizadas\n8 - Tempo gasto por cliente no produto')
 
     op = int(input('- '))
     if op == 1:
@@ -68,17 +68,44 @@ def info_data():
         elif op == 'N'.lower():
             print(df['Gender'].value_counts())
 
+def filtro_busca():
+    # na opcao 2 - > inserir opcao do usuario poder escolher entre buscar por: solteiro, casado (ou outro estado social)/ genero ou tipo de renda
+    print('Deseja filtrar como?\n1 - Qual o método de pagamento mais utilizado\n2 - Quantidade por filtro\n3 - Categoria de produtos mais comprada\n4 - pensando ainda')
+    op = int(input('- '))
+    if op == 1:
+        print('\nDeseja ver:\n1 - Quantia em especifico\n2 - O método que de fato mais aparece')
+        op = int(input('- '))
+        if op == 1:
+            n = int(input('Digite a quantidade de métodos que deseja ver: '))
+            freq = df['Payment_Method'].value_counts().head(n)
+            qtd = df['Payment_Method'].value_counts().max()
+            for i, (Payment_Method, qtd) in enumerate(freq.items(), start= 1):
+                print(f'\n{i}° {Payment_Method} | Apareceu {qtd} vezes')
+
+        elif op == 2:
+            freq = df['Payment_Method'].value_counts().idxmax()
+            qtd = df['Payment_Method'].value_counts().max()
+            print(f'\nO método de pagamento mais utilizado foi: {freq} | Utilizado {qtd} vezes')
+
+    elif op == 2:
+        print('Deseja ver:\n1 - Ver total de estados cívis\n2 - Buscar por estado cívil em especifico\n3 - Ver total de profissão dos usuários\4 - Buscar por profissão em especifico\n5 - Ver total de niveis de escolaridade no documento\n6 - Buscar por nivel de escolaridade em especifico\n7 - Filtrar por usuários que fazem parte do programa de membro')
+        op = int(input('- '))
+        if op == 1:
+            
+
 
 
 
 def main():
     while True:
-        print('\nBem vindo ao sistema de análise! O que deseja fazer?\n1 - Informações do arquio\n2 - Filtro de pesquisa\n3 - Ocorrências\n4 - Valores totais e médios\n5 - #pensando ainda...\n')
+        print('\nBem vindo ao sistema de análise! O que deseja fazer?\n1 - Informações do arquio\n2 - Filtro de pesquisa\n3 - Ocorrências\n4 - Valores totais e médios\n5 - Público alvo\n')
 
         op = int(input('- '))
 
         if op == 1:
             info_data()
+        elif op == 2:
+            filtro_busca()
 
 
 main()
