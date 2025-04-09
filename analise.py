@@ -88,10 +88,17 @@ def filtro_busca():
             print(f'\nO método de pagamento mais utilizado foi: {freq} | Utilizado {qtd} vezes')
 
     elif op == 2:
-        print('Deseja ver:\n1 - Ver total de estados cívis\n2 - Buscar por estado cívil em especifico\n3 - Ver total de profissão dos usuários\4 - Buscar por profissão em especifico\n5 - Ver total de niveis de escolaridade no documento\n6 - Buscar por nivel de escolaridade em especifico\n7 - Filtrar por usuários que fazem parte do programa de membro')
+        print('Deseja ver:\n1 - Ver estados cívis\n2 - Ver  profissão dos usuários\n3 - Ver niveis de escolaridade no documento\n4 - Filtrar por usuários que fazem parte do programa de membro')
         op = int(input('- '))
         if op == 1:
-            
+            print('Buscar por:\n1 - estado civil em especifico\n2 - Ver todos')
+            op = int(input('- '))
+
+            if op == 1:
+                print('Buscar por:\n1 - ')
+            elif op == 2:
+                print(f'{df['Marital_Status'].value_counts()}')
+        
 
 
 
