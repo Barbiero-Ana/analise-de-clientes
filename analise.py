@@ -20,8 +20,8 @@ pd.set_option('display.expand_frame_repr', False) # deve mostrar todos os cabeca
 
 # Quantos solteiros tem? -> feito
 
-# Qual é a idade média dos clientes?
-# print(f'Idade média dos clientes: {df["Age"].mean()}')
+# Qual é a idade média dos clientes? -> feito
+# print(f'Idade média dos clientes: {df["Age"].mean()}') -> feito
 
 # Qual é a idade média por nível de renda?
 
@@ -29,15 +29,15 @@ pd.set_option('display.expand_frame_repr', False) # deve mostrar todos os cabeca
 
 # Qual é a proporção de clientes por nível de renda (Baixa, Média, Alta)?
 
-# Qual é a categoria de produto mais comprada?
+# Qual é a categoria de produto mais comprada? -> Feito
 
 # Qual é o valor médio gasto por compra?
 
-# Qual é o método de pagamento mais usado?
+# Qual é o método de pagamento mais usado? -> feito
 
 # Quantas compras foram feitas online vs. em loja física?
 
-# Qual é a avaliação média dos produtos?
+# Qual é a avaliação média dos produtos? -> fazendo
 
 # O valor médio de compra é maior para clientes do gênero feminino ou masculino?
 
@@ -141,7 +141,10 @@ def filtro_busca():
             filtro_profissao()
         elif op == 3:
             escolaridade()
-        
+    elif op == 3:
+        freq = df['Purchase_Category'].value_counts().idxmax()
+        qtd = df['Purchase_Category'].value_counts().max()
+        print(f'\nA categoria de venda que mais teve vendas foi: {freq} | Sendo comprado(a): {qtd} vezes')
 
 def escolaridade():
     print('Deseja ver:\n1 - Todas as escolaridades contidas no documento\n2 - Filtrar por escolaridade em especifico')
@@ -260,7 +263,18 @@ def filtro_status_marital():
     elif op == 2:
         print(f'{df['Marital_Status'].value_counts()}')
 
+def ocorrencias():
+    print('\nDeseja ver que tipo de ocorrência?\n1 - Qual a proporção de clientes por nível de renda\n3 - ')
 
+
+def media_total():
+    print('\n1 - Média da idade dos clientes\n2 - Média da idade dos clientes dividido por nivel de renda\n3 - ')
+    op = int(input('- '))
+
+    if op == 1:
+        print(f'Idade média dos clientes: {df["Age"].mean()}')
+    elif op == 2:
+        print()
 
 
 def main():
@@ -273,6 +287,8 @@ def main():
             info_data()
         elif op == 2:
             filtro_busca()
+        elif op == 3:
+            ocorrencias()
 
 
 main()
