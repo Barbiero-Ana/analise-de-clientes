@@ -139,15 +139,47 @@ def filtro_busca():
             filtro_status_marital()
         elif op == 2:
             filtro_profissao()
+        elif op == 3:
+            escolaridade()
+        
 
+def escolaridade():
+    print('Deseja ver:\n1 - Todas as escolaridades contidas no documento\n2 - Filtrar por escolaridade em especifico')
+    op = int(input('- '))
 
+    if op == 1:
+        estud = df['Education_Level'].value_counts()
+        print(f'\n{estud}')
 
+    elif op == 2:
+        print('\n1 - Ensino médio\n2 - Bacharelado\n3 - Mestre')
+        op = int(input('- '))
+        if op == 1:
+            escola = 'High School'
+            status = df[df['Education_Level'].str.strip().str.lower() == escola.lower()]
+            print(f'\nUsuários com escolaridade de nível: {escola}')
+            print(status[['Customer_ID', 'Education_Level']])
+
+        elif op == 2:
+            escola = "Bachelor's"
+            status = df[df['Education_Level'].str.strip().str.lower() == escola.lower()]
+            print(f'\nUsuários com escolaridade de nível: {escola}')
+            print(status[['Customer_ID', 'Education_Level']])
+
+        elif op == 3:
+            escola = "Master's"
+            status = df[df['Education_Level'].str.strip().str.lower() == escola.lower()]
+            print(f'\nUsuários com escolaridade de nível: {escola}')
+            print(status[['Customer_ID', 'Education_Level']])
+        else:
+            print('Entrada inválida, tente novamente...')
 
 def filtro_profissao():
-    print('Deseja ver:\n1 - Todas as profissoes contidas no documento\n2 - Buscar por profissao em especifico')
+    print('Deseja ver:\n1 - Todas as profissoes contidas no documento')
     op = int(input('- '))
     if op == 1:
-        prof = df['']
+        prof = df['Occupation'].value_counts()
+        print(prof)
 
 def filtro_status_marital():
     print('Buscar por:\n1 - estado civil em especifico\n2 - Ver todos')
