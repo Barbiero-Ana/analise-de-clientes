@@ -8,20 +8,11 @@ pd.set_option('display.max_rows', None)  # mostra todas as linhas (tira os ... q
 pd.set_option('display.max_columns', None)  # mostra todas as colunas (tira os ... que o pandas resume)
 pd.set_option('display.expand_frame_repr', False) # deve mostrar todos os cabecalhos (tira os ... que o pandas resume)
 
+
+
+
 # Qual é o público alvo?
 
-# quantidade de cada gênero -> feito
-
-# print(df['Gender'].value_counts()) -> feito
-
-# porcentagem de cada gênero -> feito
-
-# print(df['Gender'].value_counts(normalize=True) * 100) -> feito
-
-# Quantos solteiros tem? -> feito
-
-# Qual é a idade média dos clientes? -> feito
-# print(f'Idade média dos clientes: {df["Age"].mean()}') -> feito
 
 # Qual é a idade média por nível de renda?
 
@@ -29,11 +20,7 @@ pd.set_option('display.expand_frame_repr', False) # deve mostrar todos os cabeca
 
 # Qual é a proporção de clientes por nível de renda (Baixa, Média, Alta)?
 
-# Qual é a categoria de produto mais comprada? -> Feito
-
 # Qual é o valor médio gasto por compra?
-
-# Qual é o método de pagamento mais usado? -> feito
 
 # Quantas compras foram feitas online vs. em loja física?
 
@@ -100,7 +87,7 @@ def info_data():
         print(df['Time_Spent_on_Product_Research(hours)'])
 
     elif op == 9:
-        print('Deseja ver:\n1 - todos\n2 - Quantidade em especifico')
+        print('Deseja ver:\n1 - todos\n2 - Quantidade em especifico\n3 - Avaliação média dos produtos')
         op = int(input('- '))
         if op == 1:
             print('\nAvaliação dos produtos\n')
@@ -112,6 +99,13 @@ def info_data():
             top = df.sort_values(by='Product_Rating', ascending= False).head(n)
             for i, row in top.iterrows():
                 print(f'{i+1}° - Cliente ID: {row['Customer_ID']} | Categoria: {row["Purchase_Category"]} | Avaliação: {row["Product_Rating"]}')
+        elif op == 3:
+            media = df['Product_Rating'].mean()
+            print(f'A média das avaliações é igual a -> {media}')
+
+def membership():
+    membro = df[df['Customer_Loyalty_Program_Member']]
+    print(f'{membro[['Customer_ID', 'Age', 'Customer_Loyalty_Program_Member']]}')
 
 def filtro_busca():
     # na opcao 2 - > inserir opcao do usuario poder escolher entre buscar por: solteiro, casado (ou outro estado social)/ genero ou tipo de renda
@@ -141,6 +135,8 @@ def filtro_busca():
             filtro_profissao()
         elif op == 3:
             escolaridade()
+        elif op == 4:
+            membership()
     elif op == 3:
         freq = df['Purchase_Category'].value_counts().idxmax()
         qtd = df['Purchase_Category'].value_counts().max()
