@@ -24,8 +24,6 @@ pd.set_option('display.expand_frame_repr', False) # deve mostrar todos os cabeca
 
 # Quantas compras foram feitas online vs. em loja física?
 
-# Qual é a avaliação média dos produtos? -> fazendo
-
 # O valor médio de compra é maior para clientes do gênero feminino ou masculino?
 
 # O valor médio de compra pelo marital status
@@ -264,7 +262,10 @@ def ocorrencias():
 
 
 def media_total():
-    print('\n1 - Média da idade dos clientes\n2 - Média da idade dos clientes dividido por nivel de renda\n3 - ')
+
+    # na op 4 -> incluir filtrar ou demonstrar se o genero masculino ou feminino apresentam uma média de compra maior (no caso apresentar quem tem a maior média de compra)
+
+    print('\n1 - Média da idade dos clientes\n2 - Média da idade dos clientes dividido por nivel de renda\n3 - Média dos clientes por genero\n4 - Valor médio gasto por compra\n5 - Compras em loja fisica vs loja digital\n6 - Valor médio de compra por estado civil')
     op = int(input('- '))
 
     if op == 1:
