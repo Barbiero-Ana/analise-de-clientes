@@ -18,7 +18,7 @@ pd.set_option('display.expand_frame_repr', False) # deve mostrar todos os cabeca
 
 # print(df['Gender'].value_counts(normalize=True) * 100) -> feito
 
-# Quantos solteiros tem?
+# Quantos solteiros tem? -> feito
 
 # Qual é a idade média dos clientes?
 # print(f'Idade média dos clientes: {df["Age"].mean()}')
@@ -137,6 +137,17 @@ def filtro_busca():
         op = int(input('- '))
         if op == 1:
             filtro_status_marital()
+        elif op == 2:
+            filtro_profissao()
+
+
+
+
+def filtro_profissao():
+    print('Deseja ver:\n1 - Todas as profissoes contidas no documento\n2 - Buscar por profissao em especifico')
+    op = int(input('- '))
+    if op == 1:
+        prof = df['']
 
 def filtro_status_marital():
     print('Buscar por:\n1 - estado civil em especifico\n2 - Ver todos')
