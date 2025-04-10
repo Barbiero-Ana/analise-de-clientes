@@ -83,6 +83,7 @@ def info_data():
 
     elif op == 8:
         print(df['Time_Spent_on_Product_Research(hours)'])
+        # print(df['Customer_ID','Age', 'Gender','Time_Spent_on_Product_Research(hours)']) -> buscar origem do problema 
 
     elif op == 9:
         print('Deseja ver:\n1 - todos\n2 - Quantidade em especifico\n3 - Avaliação média dos produtos')
