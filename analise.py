@@ -286,6 +286,11 @@ def main():
             filtro_busca()
         elif op == 3:
             ocorrencias()
+        elif op == 4:
+            media_total()
+        elif op == 5:
+            print()
+            # fazer a funcao do 5
 
 
 main()
