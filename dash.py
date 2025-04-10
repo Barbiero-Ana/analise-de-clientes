@@ -1,6 +1,5 @@
 import streamlit as st
 import pandas as pd
-import matplotlib.pyplot as plt
 
 # Carrega os dados
 df = pd.read_csv('Ecommerce_Consumer_Behavior_Analysis_Data.csv')
