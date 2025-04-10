@@ -159,8 +159,8 @@ def filtro_status_marital():
                     for i, row in marital.iterrows():
                         print(f'- Cliente ID: {row['Customer_ID']} | Estado civil: {row['Marital_Status']}')
             elif op == 2:
-                val = df[df['Marital_Status'] == status].value_counts()
-                print(f'\n{val}')
+                val = df['Marital_Status'].value_counts().get(status, 0)
+                print(f'\nTotal de usuários Viuvos: {val}')
 
         elif op == 2:
             status = 'Married'
@@ -176,8 +176,8 @@ def filtro_status_marital():
                     for i, row in marital.iterrows():
                         print(f'- Cliente ID: {row['Customer_ID']} | Estado civil: {row['Marital_Status']}')
             elif op == 2:
-                val = df[df['Marital_Status'] == status].value_counts()
-                print(f'\n{val}')
+                val = df['Marital_Status'].value_counts().get(status, 0)
+                print(f'\nTotal de usuários Casados: {val}')
 
         elif op == 3:
             status = 'Divorced'
@@ -193,8 +193,25 @@ def filtro_status_marital():
                     for i, row in marital.iterrows():
                         print(f'- Cliente ID: {row['Customer_ID']} | Estado civil: {row['Marital_Status']}')
             elif op == 2:
-                val = df[df['Marital_Status'] == status].value_counts()
-                print(f'\n{val}')
+                val = df['Marital_Status'].value_counts().get(status, 0)
+                print(f'\nTotal de usuários Divorciados: {val}')
+
+        elif op == 4:
+            status = 'Single'
+            print('Deseja ver:\n1 - todos com ID de usuários\n2 - Apenas a quantidade total')
+            op = int(input('- '))
+            if op == 1:
+                print('\nUsuários Solteiros\n')
+                marital = df[df['Marital_Status'] == status]
+                if marital.empty:
+                    print('Erro, nenhum usuário com este status civil...')
+                else:
+                    print(f'\nUsuário de status civil igual a: {status}/ Solteiros\n')
+                    for i, row in marital.iterrows():
+                        print(f'- Cliente ID: {row['Customer_ID']} | Estado civil: {row['Marital_Status']}')
+            elif op == 2:
+                val = df['Marital_Status'].value_counts().get(status, 0)
+                print(f'\nTotal de usuários solteiros: {val}')
         
                 
     elif op == 2:
