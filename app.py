@@ -149,17 +149,34 @@ def info_arqv():
         'Índice': range(1, len(column_names) + 1),
         'Nome da Coluna': column_names,
         'Descrição': [
-            'Posição do jogo no ranking' if col == 'Rank' else
-            'Nome do jogo' if col == 'Name' else
-            'Plataforma do jogo' if col == 'Platform' else
-            'Ano de lançamento' if col == 'Year' else
-            'Gênero do jogo' if col == 'Genre' else
-            'Editora do jogo' if col == 'Publisher' else
-            'Vendas na América do Norte (milhões)' if col == 'NA_Sales' else
-            'Vendas na Europa (milhões)' if col == 'EU_Sales' else
-            'Vendas no Japão (milhões)' if col == 'JP_Sales' else
-            'Vendas em outras regiões (milhões)' if col == 'Other_Sales' else
-            'Vendas globais (milhões)' if col == 'Global_Sales' else
+            'ID de consumidor' if col == 'Customer_ID' else
+            'Idade' if col == 'Age' else
+            'Gênero' if col == 'Gender' else
+            'Nivel de renda' if col == 'Income_Level' else
+            'Estado civil' if col == 'Marital_Status' else
+            'Nivel de educação' if col == 'Education_Level' else
+            'Ocupação' if col == 'Occupation' else
+            'Localização' if col == 'Location' else
+            'Categoria de compra' if col == 'Purchase_Category' else
+            'Montante de compra' if col == 'Purchase_Amount' else
+            'Frequência de compra' if col == 'Frequency_of_Purchase' else
+            'Canal de compra' if col == 'Purchase_Channel' else
+            'Fidelidade a marca' if col == 'Brand_Loyalty' else
+            'Feedback do produto' if col == 'Product_Rating' else
+            'Tempo gasto em pesquisa de produto' if col == 'Time_Spent_on_Product_Research(hours)' else
+            'Influência nas midias sociais' if col == 'Social_Media_Influence' else
+            'Sensibilidade ao desconto' if col == 'Discount_Sensitivity' else
+            'Taxa de retorno' if col == 'Return_Rate' else
+            'Taxa de satisfação do cliente' if col == 'Customer_Satisfaction' else
+            'Engajamento com propagandas' if col == 'Engagement_with_Ads' else
+            'Dispositivo utilizado para compra' if col == 'Device_Used_for_Shopping' else
+            'Método de pagamento' if col == 'Payment_Method' else
+            'Tempo de compra' if col == 'Time_of_Purchase' else
+            'Desconto utilizado' if col == 'Discount_Used' else
+            'Membro do programa de fidelidade do cliente' if col == 'Customer_Loyalty_Program_Member' else
+            'Itenção de compra' if col == 'Purchase_Intent' else
+            'Preferência de envio' if col == 'Shipping_Preference' else
+            'Tempo de decisão' if col == 'Time_to_Decision' else
             'Descrição não disponível'
             for col in column_names
         ]
