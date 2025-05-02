@@ -13,6 +13,15 @@ if not os.path.exists(csv_file):
     st.error(f"Arquivo {csv_file} não encontrado. Certifique-se de que o arquivo está no diretório correto.")
     st.stop()
 
+
+
+df = pd.read_csv(csv_file)
+df['Year'] = pd.to_numeric(df['Year'], errors='coerce').astype('Int64')
+column_names = df.columns
+pd.set_option('display.max_rows', None)
+pd.set_option('display.max_columns', None)
+pd.set_option('display.expand_frame_repr', False)
+
 st.title('Análise de dados de um Ecommerce')
 st.markdown('Esta análise irá apresentar dados de consumidores e suas comprar em um Ecommerce')
 
@@ -116,3 +125,57 @@ st.markdown("""
     }
     </script>
 """, unsafe_allow_html=True)
+
+
+def info_arqv():
+    st.header('Informações sobre o dataset')
+    op = st.sidebar.selectbox('Selecione um opção',[
+        'Titulo das colunas',
+        'Número de linhas e colunas',
+        'Tipo dos dados armazenados no dataset',
+        ''
+    ], key='inf_option')
+
+    if op == 'Titulo das colunas':
+        st.subheader('Colunas do dataset')
+        view = st.radio(
+            'Escolha o modo de visualização:',
+            ['Tabela interativa', 'Cartão interativo'],
+            key='view_mode'
+        )
+
+# Dados das colunas
+    columns_df = pd.DataFrame({
+        'Índice': range(1, len(column_names) + 1),
+        'Nome da Coluna': column_names,
+        'Descrição': [
+            'Posição do jogo no ranking' if col == 'Rank' else
+            'Nome do jogo' if col == 'Name' else
+            'Plataforma do jogo' if col == 'Platform' else
+            'Ano de lançamento' if col == 'Year' else
+            'Gênero do jogo' if col == 'Genre' else
+            'Editora do jogo' if col == 'Publisher' else
+            'Vendas na América do Norte (milhões)' if col == 'NA_Sales' else
+            'Vendas na Europa (milhões)' if col == 'EU_Sales' else
+            'Vendas no Japão (milhões)' if col == 'JP_Sales' else
+            'Vendas em outras regiões (milhões)' if col == 'Other_Sales' else
+            'Vendas globais (milhões)' if col == 'Global_Sales' else
+            'Descrição não disponível'
+            for col in column_names
+        ]
+    })
+    
+
+
+
+# '''
+# -> por na parte de filtro:
+#     Quantidade de cada genero 
+#     Localizações de compras realizadas
+#     Tempo gasto por cliente no produto
+
+# -> por na parte de métricas:
+#     Distribuição por nível de escolaridade
+#     Distribuição por categoria de compra
+
+# '''
