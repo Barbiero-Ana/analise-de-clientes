@@ -1,0 +1,5 @@
+Cabeçalho:
+Customer_ID,Age,Gender,Income_Level,Marital_Status,Education_Level,Occupation,Location,Purchase_Category,Purchase_Amount,Frequency_of_Purchase,Purchase_Channel,Brand_Loyalty,Product_Rating,Time_Spent_on_Product_Research(hours),Social_Media_Influence,Discount_Sensitivity,Return_Rate,Customer_Satisfaction,Engagement_with_Ads,Device_Used_for_Shopping,Payment_Method,Time_of_Purchase,Discount_Used,Customer_Loyalty_Program_Member,Purchase_Intent,Shipping_Preference,Time_to_Decision
+
+Linha 24:
+19-933-8095,34,Male,Middle,Single,Bachelor's,High,Gaosheng,Luxury Goods,$61.22 ,7,In-Store,5,2,2,Low,Very Sensitive,1,7,High,Desktoe,2,1,None,Tablet,Debit Card,2/25/2024,TRUE,TRUE,Impulsive,Standard,6
